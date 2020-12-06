@@ -1,0 +1,65 @@
+
+<div class="row">
+    
+        <div *ngFor="let prod of service.filteredProduct" >
+       
+           
+            <div class="col-md-4 ">
+              <div class="card " style="width: 18rem; padding-left: 5mm;"><br>
+                  <img [src]="getImage(prod.Image)" width="250px" height="250px" />
+                  <div class="card-body">
+                      <label style="color:coral"><h4 class="card-title  ">{{prod.Name}}</h4></label>
+                      <p class="card-text">
+                         
+                          Color: {{prod.ProductColor}}<br>
+                          Quantity: {{prod.Quantity}} 
+                      </p>
+                      <h2 class="text-justify " style="font-size:17px;color:#ff6a00">Price: {{prod.price}}</h2>
+                      <a class=" btn btn-success "><i class="fas fa-heart"></i> Detailsc</a>
+                      <a class="btn btn-warning"><i class="fas fa-shopping-cart"></i> Add Cart</a>
+
+                  </div>
+               </div>
+            </div>
+    
+       
+ 
+        </div>
+</div>
+
+
+
+    
+      
+          <!-- <div class="col-md-3  table-bordered ">
+          <br />
+          <div class="card col-md-4 " style="width: 18rem;">
+              <img [src]="getImage(prod.Image)" width="250px" height="250px" />
+              <div class="card-body">
+                  <label style="color:coral"><h4 class="card-title  ">{{prod.Name}}</h4></label>
+                  @*<p class="card-text"><i class="fas fa-money-bill-wave"></i>{{prod.price}}</p>*@
+              </div>
+              <div>
+
+                  <p>COLOR: {{prod.ProductColor}}</p><br />
+                  <p>Product Type: {{prod.Quantity}}</p>
+
+
+              </div>
+
+              <div class="card-header  ">
+                  <br />
+                  <h1 class="text-justify " style="font-size:17px;color:#ff6a00">Price: @prod.price tk</h1>
+
+                  <div class="btn btn-justified">
+                      <a asp-route-id="@prod.Id" asp-action="Details" asp-controller="Home" class=" btn btn-success "><i class="fas fa-heart"></i> Details</a>
+                      <a asp-action="addcart" asp-route-Id="@prod.Id" class="btn btn-warning"><i class="fas fa-shopping-cart"></i> Add Cart</a>
+
+                  </div>
+
+              </div><br />
+           </div>
+           </div> -->
+       
+  
+

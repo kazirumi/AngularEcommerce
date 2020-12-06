@@ -1,0 +1,87 @@
+<form #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+  <input name="ID" type="hidden" [value]="service.formData.ID">
+  <div class="row">
+    <div class="col-4">
+      <div class=" form-group">
+        <label id="">Product Name</label>
+        <input  class="form-control" name="Name" #Name="ngModel" [(ngModel)]="service.formData.Name" placeholder="Enter Product Name" required>
+      </div>
+      <div class=" form-group">
+        <label id="">Price</label>
+        <input type="number"  class="form-control" name="price" #price="ngModel" [(ngModel)]="service.formData.price" placeholder="Enter Product price" required>
+      </div>
+      <div class=" form-group">
+        <div class="form-group">
+          <label for="Description">Description:</label>
+          <textarea  class="form-control" name="Description" #Description="ngModel" [(ngModel)]="service.formData.Description" placeholder="Enter Product Description" required rows="5" ></textarea>
+        </div>
+        
+      </div>
+     
+      
+      <div class=" checkbox form-group">
+        <label >
+        <input type="checkbox"  name="IsAvailable" #IsAvailable="ngModel" [(ngModel)]="service.formData.IsAvailable" >
+        Available
+       </label>
+      </div>
+      <div class=" form-group">
+        <label > Product Color</label>
+        <input type="text" class="form-control" name="ProductColor" #ProductColor="ngModel" [(ngModel)]="service.formData.ProductColor" placeholder="Enter Product ProductColor" required>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class=" form-group">
+        <label id="">Product Quantity</label>
+        <input type="number"  class="form-control" name="Quantity" #Quantity="ngModel" [(ngModel)]="service.formData.Quantity" placeholder="Enter Product price" required>
+      </div>
+      <div class=" form-group">
+        <label > Product Quantity Type</label>
+        <select  class="form-control" name="QuantityTypeID" #QuantityTypeID="ngModel" [(ngModel)]="service.formData.QuantityTypeID"  required>
+          <option disabled [value]='0'>Select Quantity</option>
+          <option *ngFor="let qt of service.quantityTypeList" [value]='qt.ID'>{{qt.QuantityTypeName}}</option>
+
+        </select>
+      </div>
+      <div class=" form-group">
+        <label > Product Product Type</label>
+        <select  class="form-control" name="ProductTypeId" #ProductTypeId="ngModel" [(ngModel)]="service.formData.ProductTypeId"  required>
+          <option disabled [value]='0'>Select Product Type</option>
+          <option *ngFor="let pdt of service.productTypeList" [value]='pdt.ID'>{{pdt.ProductTypeName}}</option>
+        
+        </select>
+      </div>
+      <div class=" form-group">
+        <label > Product SpecialTag</label>
+        <select  class="form-control" name="SpecialTagId" #SpecialTagId="ngModel" [(ngModel)]="service.formData.SpecialTagId"  required>
+          <option disabled [value]='0'>Select SpecialTag</option>
+          <option *ngFor="let st of service.specialTagList" [value]='st.ID'>{{st.SpecialTagName}}</option>
+        
+        </select>
+      </div>
+      <div >
+        <img  [src]="service.formData.Image"   style="height:200px; width:250px;">
+        <div class=" form-group">
+          <label for="Image">Select Product Image </label>
+          <input id="Image" type="file"  (change)="handleFileInput($event.target.files)"  class="form-control"  name="Image" #Image="ngModel" [(ngModel)]="service.formData.Image"  >
+         <!-- <br> <button type="button" class="btn btn-info" (click)="uploadConfirm(Image)">Image Upload Confirm</button> --><br><div style="color: red;">{{progress}}<br>{{message}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+    </div>
+  </div>
+  
+
+
+<div class="col-8">
+  <button type="submit" class="btn btn-success form-control ">Save Product</button>
+
+
+
+</div>
+
+
+</form>
+{{service.productList|json}}
