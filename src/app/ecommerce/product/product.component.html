@@ -1,7 +1,7 @@
 
-<div class="row">
+<div class="row" style="margin-top: 5px;">
     
-        <div *ngFor="let prod of service.filteredProduct" >
+        <div  *ngFor="let prod of service.filteredProduct" >
        
            
             <div class="col-md-4 ">
@@ -15,8 +15,8 @@
                           Quantity: {{prod.Quantity}} 
                       </p>
                       <h2 class="text-justify " style="font-size:17px;color:#ff6a00">Price: {{prod.price}}</h2>
-                      <a class=" btn btn-success "><i class="fas fa-heart"></i> Detailsc</a>
-                      <a class="btn btn-warning"><i class="fas fa-shopping-cart"></i> Add Cart</a>
+                      <a (click)="onSelect(prod)" class=" btn btn-success "><i class="fas fa-heart"></i> Details</a>
+                      <button [disabled]="!prod.IsAvailable" class="btn btn-warning" (click)="findProductDetail(prod.Id)"><i class="fas fa-shopping-cart"></i> Add Cart</button>
 
                   </div>
                </div>
@@ -27,7 +27,8 @@
         </div>
 </div>
 
-
+<!-- {{service.productList|json}} -->
+<!-- {{service.filteredProduct|json}} -->
 
     
       

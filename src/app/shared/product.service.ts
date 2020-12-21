@@ -17,10 +17,15 @@ export class ProductService {
 
   productList:Product[];
   filteredProduct:Product[];
+  cartProduct:Product[]=[];
+
+  cartNumber:number=0;
 
   readonly rootURL='https://localhost:44386/api';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+    this.filteredProduct=this.productList
+   }
 
   createProduct(){
     return this.http.post(this.rootURL+'/Product',this.formData);
@@ -30,6 +35,12 @@ export class ProductService {
     this.http.get(this.rootURL+'/Product')
     .toPromise()
     .then(res=>this.productList=res as Product[])
+   
+  }
+  getFilterProductList(){
+    this.http.get(this.rootURL+'/Product')
+    .toPromise()
+    .then(res=>this.filteredProduct=res as Product[])
   }
 
   getproductType(){
@@ -37,6 +48,7 @@ export class ProductService {
      .toPromise()
      .then(res=>this.productTypeList=res as ProductType[]);
   }
+  
 
   
   getQuantityType(){

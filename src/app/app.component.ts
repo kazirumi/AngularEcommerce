@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { isNull } from 'util';
 import { Product } from './shared/product.model';
 import { ProductService } from './shared/product.service';
 
@@ -12,7 +13,7 @@ export class AppComponent {
 
   constructor(private service:ProductService)
   {
-   
+    this.service.getProductList();
   }
 
 
@@ -24,6 +25,7 @@ export class AppComponent {
     console.log(value);
    
      this.service.filteredProduct=this.service.productList.filter(product=>product.Name.toLowerCase().indexOf(value.toLowerCase())!==-1);
+
   }
 
   filterProduct(searchString:string){

@@ -1,0 +1,35 @@
+<h1>Product Detail</h1>
+<div   class="row col-12">
+  <div class="col-6">
+   <label >Name: </label>
+   <h4> {{productDetail.Name}} </h4><br>
+   <label>Price:</label>
+   <h4> {{productDetail.price}} </h4><br>
+   <label>Description:</label>
+   <h4> {{productDetail.Description}} </h4><br>
+   <label>Quantity:</label>
+   <h4> {{productDetail.Quantity}} </h4><br>
+   <label>ProductColor:</label>
+   <h4> {{productDetail.ProductColor}} </h4><br>
+   <label>Availability:</label><br>
+   <div *ngIf="productDetail.IsAvailable; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock><img src="/assets/img/Available.jpg" alt=""></ng-template>
+   <ng-template #elseBlock><img src="/assets/img/not-available.jpg" alt=""></ng-template>
+
+  </div>
+
+  <div class="col-6">
+    <img [src]="displayPhoto(productDetail.Image)" style="height:400px; width: 400px;" alt="">
+  <br><br>
+  <button [disabled]="!productDetail.IsAvailable" (click)="saveCart(productDetail)" class="btn btn-success"><i class="fas fa-cart-arrow-down"></i> Add To Cart</button><br><br>
+  <a class="btn btn-info" routerLink="/Product"><i class="far fa-hand-point-left"></i> Back</a>
+
+  </div>
+
+</div>
+
+{{service.cartNumber}}
+
+{{service.cartProduct|json}}
+
+<!-- {{productDetail|json}} -->
