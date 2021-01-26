@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Order } from './order.model';
 import { ProductType } from './product-type.model';
 import { Product } from './product.model';
 import { QuantityType } from './quantity-type.model';
@@ -11,6 +12,8 @@ import { SpecialTag } from './special-tag.model';
 export class ProductService {
 
   formData:Product;
+  formDataOrder:Order;
+
   productTypeList:ProductType[];
   specialTagList:SpecialTag[];
   quantityTypeList:QuantityType[];
@@ -29,6 +32,9 @@ export class ProductService {
 
   createProduct(){
     return this.http.post(this.rootURL+'/Product',this.formData);
+  }
+  createOrder(){
+    return this.http.post(this.rootURL+'/Orders',this.formDataOrder);
   }
 
   getProductList(){

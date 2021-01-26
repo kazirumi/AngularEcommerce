@@ -3,7 +3,6 @@
     
         <div  *ngFor="let prod of service.filteredProduct" >
        
-           
             <div class="col-md-4 ">
               <div class="card " style="width: 18rem; padding-left: 5mm;"><br>
                   <img [src]="getImage(prod.Image)" width="250px" height="250px" />
@@ -14,7 +13,7 @@
                           Color: {{prod.ProductColor}}<br>
                           Quantity: {{prod.Quantity}} 
                       </p>
-                      <h2 class="text-justify " style="font-size:17px;color:#ff6a00">Price: {{prod.price}}</h2>
+                      <h2 class="text-justify " style="font-size:17px; color:#ff6a00">Price: {{prod.price}}</h2>
                       <a (click)="onSelect(prod)" class=" btn btn-success "><i class="fas fa-heart"></i> Details</a>
                       <button [disabled]="!prod.IsAvailable" class="btn btn-warning" (click)="findProductDetail(prod.Id)"><i class="fas fa-shopping-cart"></i> Add Cart</button>
 
@@ -22,8 +21,6 @@
                </div>
             </div>
     
-       
- 
         </div>
 </div>
 

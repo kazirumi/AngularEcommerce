@@ -1,5 +1,5 @@
 <form #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
-  <input name="ID" type="hidden" [value]="service.formData.ID">
+  <input name="Id" type="hidden" [value]="service.formData.Id">
   <div class="row">
     <div class="col-4">
       <div class=" form-group">
@@ -60,7 +60,7 @@
         
         </select>
       </div>
-      <div >
+      <div>
         <img  [src]="service.formData.Image"   style="height:200px; width:250px;">
         <div class=" form-group">
           <label for="Image">Select Product Image </label>
@@ -76,9 +76,8 @@
 
 
 <div class="col-8">
+  
   <button type="submit" class="btn btn-success form-control ">Save Product</button>
-
-
 
 </div>
 

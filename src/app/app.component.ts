@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { isNull } from 'util';
 import { Product } from './shared/product.model';
 import { ProductService } from './shared/product.service';
@@ -11,7 +12,7 @@ import { ProductService } from './shared/product.service';
 export class AppComponent {
   private _searchTerm:string;
 
-  constructor(private service:ProductService)
+  constructor(private service:ProductService,private router:Router)
   {
     this.service.getProductList();
   }
@@ -25,6 +26,7 @@ export class AppComponent {
     console.log(value);
    
      this.service.filteredProduct=this.service.productList.filter(product=>product.Name.toLowerCase().indexOf(value.toLowerCase())!==-1);
+     this.router.navigate(['/Product']);
 
   }
 

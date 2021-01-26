@@ -1,14 +1,14 @@
 <br><br>
 <h2 style="margin-top: 5px;">Your Cart</h2>
 <table class="table table-hover table-bordered   " style="border: black;">
-   <thead class="thead-dark">
+  <thead class="thead-dark">
      <tr>
         <th>Product Name</th>
         <th>Image</th>
         <th>Quantity</th>
         <th>Price</th>
       </tr>
-   </thead>
+  </thead>
   <tbody>
     <tr *ngFor="let cart of service.cartProduct">
       <td>{{cart.Name}}</td>
@@ -19,6 +19,6 @@
   </tbody>
 </table>
 <div *ngIf="TotalPrice>0" class="col-12 "><h1>Total Price: {{TotalPrice}} </h1></div>
-<button *ngIf="PLaceOrder" class="btn btn-success">Place Oreder</button>
+<button *ngIf="PLaceOrder" style="margin-bottom: 5px;" (click)="OnSelectOrder()" class="btn btn-success">Place Oreder</button>
 <br>
 <!-- {{service.cartProduct|json}} -->

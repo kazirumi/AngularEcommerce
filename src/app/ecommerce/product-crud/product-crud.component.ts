@@ -96,12 +96,13 @@ public progress: number;
       else if(event.type===HttpEventType.Response)
       { this.message='Upload successful';
 
-      this.SetImagepath(event.body);
+       this.SetImagepath(event.body);
       
        this.service.createProduct()
-       .subscribe(
-        res=>{ this.resetForm(form)},
-        err=>{console.log(err)}
+       .subscribe
+       (
+          res=>{ this.resetForm(form)},
+          err=>{console.log(err)}
         
         
         );

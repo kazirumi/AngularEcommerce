@@ -1,0 +1,72 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav 
+      #drawer 
+      class="sidenav" 
+      fixedInViewport="false"
+      
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar style="background-color: rgb(67, 79, 185); color: white; text-decoration: none;">Menu</mat-toolbar>
+    <mat-nav-list>
+
+      <a mat-list-item  routerLink="/Product"  class="nav-link active ">Product List</a>
+      <a mat-list-item  routerLink="/ProductCRUD"  class="nav-link active" >Product Create</a>
+      <!-- <a mat-list-item href="#">Link 3</a> -->
+
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Product Types
+            </mat-panel-title>
+            <!-- <mat-panel-description>
+              Currently I am {{panelOpenState ? 'open' : 'closed'}}
+            </mat-panel-description> -->
+          </mat-expansion-panel-header>
+          <a class="btn btn-lg" style="display: inline-block;"  *ngFor="let ProductTypes of service.productTypeList" (click)="SearchProductTypeWise(ProductTypes.ID)"> {{ProductTypes.ProductTypeName}}</a>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <!-- *ngIf="isHandset$ | async" -->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+         
+        >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span><a routerLink="/Ecommerce">AngularEcommerceNew</a></span>
+      <mat-form-field class="example-full-width" floatLabel="never">
+        
+        <input style="flex-flow: unset;" matInput placeholder="Type Your Product" [(ngModel)]="searchKey"  (keyup)="searchTerm()" >
+        <button mat-button *ngIf="searchKey" matSuffix mat-icon-button aria-label="Clear" (click)="searchKey=''">
+            <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <span class="spacer"></span>
+      
+        <a mat-list-item routerLink="/Product"> Product </a>
+        <a mat-list-item routerLink="/ProductCRUD"> ProductCRUD </a>
+        <a mat-list-item routerLink="/AddToCart"> <i class="fas fa-shopping-cart"></i>({{service.cartNumber}}) </a>
+
+
+      
+      
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    
+      <div class="container">
+  
+       <router-outlet></router-outlet>
+ 
+      </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
