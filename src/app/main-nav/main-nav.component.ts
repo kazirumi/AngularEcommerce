@@ -38,4 +38,11 @@ export class MainNavComponent implements OnInit {
      this.router.navigate(['/Product']);
 
   }
+
+  SearchProductTypeWise(ProdTypeID:number){
+    
+
+    this.service.filteredProduct=this.service.productList.filter(product=>product.ProductTypeId==ProdTypeID);
+    this.router.navigate(['/Product']);
+  }
 }
