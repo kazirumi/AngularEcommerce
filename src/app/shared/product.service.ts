@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Order } from './order.model';
 import { ProductType } from './product-type.model';
 import { Product } from './product.model';
@@ -26,9 +27,28 @@ export class ProductService {
 
   readonly rootURL='https://localhost:44386/api';
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient,private fb:FormBuilder) {
     this.filteredProduct=this.productList
    }
+
+   userModel=this.fb.group({
+
+    UserName:['',Validators.required],
+    Email:['',Validators.email],
+    FullName:[''],
+    Passwords:this.fb.group({
+      Password:['',[Validators.required,Validators.minLength(4)]],
+      ConfirmPassword:['',Validators.required]
+    },
+    {
+      // Validators.this.comparePasswords;
+    }
+    )
+   
+
+   });
+
+   comparePasswords
 
   createProduct(){
     return this.http.post(this.rootURL+'/Product',this.formData);
