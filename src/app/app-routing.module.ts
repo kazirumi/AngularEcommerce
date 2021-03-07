@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductCRUDComponent } from './Ecommerce/product-crud/product-crud.component';
 import { ProductComponent } from './Ecommerce/product/product.component';
@@ -6,6 +6,8 @@ import { ProductDetailComponent } from './ecommerce/product-crud/product-detail/
 import { EcommerceComponent } from './Ecommerce/ecommerce.component';
 import { AddToCartComponent } from './Ecommerce/Product/add-to-cart/add-to-cart.component';
 import { OrderComponent } from './ecommerce/order/order.component';
+import { UserComponent } from './user/user.component';
+import { RegistrationComponent } from './user/registration/registration.component';
 
 const routes: Routes = [
   {path:'Product',component:ProductComponent},
@@ -16,7 +18,11 @@ const routes: Routes = [
   {path:'Ecommerce',component:EcommerceComponent },
   {path:'AddToCart',component:AddToCartComponent},
 
-  {path:'',redirectTo:'Ecommerce',pathMatch:'full' }
+  {path:'user',component:UserComponent,children:[
+    {path:'registration',component:RegistrationComponent}
+  ]},
+
+  {path:'',redirectTo:'/user/registration',pathMatch:'full' }
 
 ];
 
@@ -25,4 +31,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents=[ProductComponent,ProductCRUDComponent,ProductDetailComponent,EcommerceComponent,AddToCartComponent,OrderComponent]
+export const routingComponents=[ProductComponent,ProductCRUDComponent,ProductDetailComponent,EcommerceComponent,AddToCartComponent,OrderComponent, UserComponent,RegistrationComponent]

@@ -23,6 +23,9 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 // import { ProductDetailComponent } from './ProductCRUD/product-detail/product-detail.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatExpansionModule} from '@angular/material/expansion';
+//import { UserComponent } from './user/user.component';
+//import { RegistrationComponent } from './user/registration/registration.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -31,6 +34,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
     routingComponents,
     
     MainNavComponent,
+    
+    //UserComponent,
+    
+    //RegistrationComponent,
     
    
     
@@ -50,7 +57,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatIconModule,
     MatListModule,
     MatInputModule,
-    MatExpansionModule
+    MatExpansionModule,
+    ReactiveFormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
