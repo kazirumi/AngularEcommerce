@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <form [formGroup]="service.userModel" autocomplete="off">
+        <form [formGroup]="service.userModel" autocomplete="off" (submit)="onSubmit()">
             <div class="form-group required">
                 <label>User Name</label>
                 <input type="text" class="form-control" formControlName="UserName">
@@ -25,22 +25,25 @@
             <div formGroupName="Passwords">
                 <div class="form-group required">
                     <label>Password</label>
-                    <input type="text" class="form-control" formControlName="Password">
+                    <input type="password" class="form-control" formControlName="Password">
                     <label class="text-danger" *ngIf="service.userModel.get('Passwords.Password').touched && service.userModel.get('Passwords.Password').errors?.required">Password is must.</label>
                     <label class="text-danger" *ngIf="service.userModel.get('Passwords.Password').touched && service.userModel.get('Passwords.Password').errors?.minlength">Minimum 4 Characters.</label>
             
                 </div>
                 <div class="form-group required">
                     <label>Confirm Password</label>
-                    <input type="text" class="form-control" formControlName="ConfirmPassword">
+                    <input type="password" class="form-control" name="Confirm" #Confirm (keyup)="CheckPassword(Confirm.value)" formControlName="ConfirmPassword">
                     <label class="text-danger" *ngIf="service.userModel.get('Passwords.ConfirmPassword').touched && service.userModel.get('Passwords.ConfirmPassword').errors?.required">Confirm Password is must.</label>
+                    <label class="text-success" *ngIf="service.userModel.get('Passwords.ConfirmPassword').touched && Check">Confirm Password  matched.</label>
+                    <label class="text-danger" *ngIf="service.userModel.get('Passwords.ConfirmPassword').dirty && !Check">Confirm Password did not match.</label>
+
                     
             
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-8 offset-md-2">
-                    <button class="submit btn btn-lg btn-block btn-success" [disabled]="!service.userModel.valid">Submit</button>
+                    <button type="submit" class="submit btn btn-lg btn-block btn-success" [disabled]="!service.userModel.valid">Submit</button>
                 </div>
             </div>
             

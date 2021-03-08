@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Order } from './order.model';
 import { ProductType } from './product-type.model';
 import { Product } from './product.model';
@@ -39,17 +39,38 @@ export class ProductService {
     Passwords:this.fb.group({
       Password:['',[Validators.required,Validators.minLength(4)]],
       ConfirmPassword:['',Validators.required]
-    },
-    {
-      // Validators.this.comparePasswords;
-    }
-    )
-   
-
+    })
    });
 
-   comparePasswords
+  //  comparePassword(fb:FormGroup){
 
+  //   let confirmPswrdCtrl= fb.get('ConfirmPassword');
+    
+  //   if(confirmPswrdCtrl.errors==null)
+  //   {
+  //     if(fb.get('Password').value != confirmPswrdCtrl.value)
+  //     {
+  //       confirmPswrdCtrl.setErrors({passwordMismatch:true});
+  //     }
+  //     else
+  //     {
+  //       confirmPswrdCtrl.setErrors(null);
+  //     }
+  //   }
+
+  //  }
+
+  CreateUser(){
+    var body={
+      UserName:this.userModel.value.UserName,
+      Email:this.userModel.value.Email,
+      FullName:this.userModel.value.FullName,
+      Password:this.userModel.value.Passwords.Password,
+
+    };
+   return this.http.post(this.rootURL+'/ApplicationUsers/Register',body);
+
+  }
   createProduct(){
     return this.http.post(this.rootURL+'/Product',this.formData);
   }

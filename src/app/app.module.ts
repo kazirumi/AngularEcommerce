@@ -27,6 +27,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
 //import { RegistrationComponent } from './user/registration/registration.component';
 import { ReactiveFormsModule } from "@angular/forms";
 
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +62,10 @@ import { ReactiveFormsModule } from "@angular/forms";
     MatListModule,
     MatInputModule,
     MatExpansionModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      progressBar:true
+    })
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
