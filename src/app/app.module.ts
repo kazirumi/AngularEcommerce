@@ -30,6 +30,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+// import { LoginComponent } from './user/login/login.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,8 @@ import { ToastrModule } from 'ngx-toastr';
     routingComponents,
     
     MainNavComponent,
+    
+    // LoginComponent,
     
     //UserComponent,
     

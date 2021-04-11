@@ -8,6 +8,7 @@ import { AddToCartComponent } from './Ecommerce/Product/add-to-cart/add-to-cart.
 import { OrderComponent } from './ecommerce/order/order.component';
 import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
+import { LoginComponent } from './user/login/login.component';
 
 const routes: Routes = [
   {path:'Product',component:ProductComponent},
@@ -19,7 +20,11 @@ const routes: Routes = [
   {path:'AddToCart',component:AddToCartComponent},
 
   {path:'user',component:UserComponent,children:[
-    {path:'registration',component:RegistrationComponent}
+
+    {path:'registration',component:RegistrationComponent},
+    {path:'login',component:LoginComponent}
+    
+
   ]},
 
   {path:'',redirectTo:'/user/registration',pathMatch:'full' }
@@ -31,4 +36,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents=[ProductComponent,ProductCRUDComponent,ProductDetailComponent,EcommerceComponent,AddToCartComponent,OrderComponent, UserComponent,RegistrationComponent]
+export const routingComponents=[ProductComponent,ProductCRUDComponent,ProductDetailComponent,EcommerceComponent,AddToCartComponent,OrderComponent, UserComponent,RegistrationComponent,LoginComponent]
