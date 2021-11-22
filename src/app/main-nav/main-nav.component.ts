@@ -13,6 +13,7 @@ export class MainNavComponent implements OnInit {
 
   panelOpenState = false;
   searchKey:string;
+  
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -27,6 +28,12 @@ export class MainNavComponent implements OnInit {
 
   ngOnInit() {
     this.service.getproductType();
+
+    
+    this.service.signInStatus=localStorage.getItem('token')!=null? true:false;
+
+    
+   
   }
 
       
@@ -44,5 +51,14 @@ export class MainNavComponent implements OnInit {
 
     this.service.filteredProduct=this.service.productList.filter(product=>product.ProductTypeId==ProdTypeID);
     this.router.navigate(['/Product']);
+  }
+
+  onLogOut(){
+    
+    localStorage.removeItem('token');
+    this.service.signInStatus = false;
+    
+    this.router.navigate(['/user/login']);
+
   }
 }

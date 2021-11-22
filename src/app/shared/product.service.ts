@@ -25,6 +25,9 @@ export class ProductService {
 
   cartNumber:number=0;
 
+  signInStatus:boolean;
+  
+
   readonly rootURL='https://localhost:44386/api';
 
   constructor(private http:HttpClient,private fb:FormBuilder) {
@@ -60,22 +63,16 @@ export class ProductService {
 
   //  }
 
-  CreateUser(){
-    var body={
-      UserName:this.userModel.value.UserName,
-      Email:this.userModel.value.Email,
-      FullName:this.userModel.value.FullName,
-      Password:this.userModel.value.Passwords.Password,
-
-    };
-   return this.http.post(this.rootURL+'/ApplicationUsers/Register',body);
-
-  }
-  createProduct(){
-    return this.http.post(this.rootURL+'/Product',this.formData);
-  }
+   //Http Request For Order CRUD
+  
   createOrder(){
     return this.http.post(this.rootURL+'/Orders',this.formDataOrder);
+  }
+
+  //Http Request For Product CRUD
+
+  createProduct(){
+    return this.http.post(this.rootURL+'/Product',this.formData);
   }
 
   getProductList(){
@@ -90,13 +87,16 @@ export class ProductService {
     .then(res=>this.filteredProduct=res as Product[])
   }
 
+
+  //Http Requests For Product Type CRUD
+
   getproductType(){
      this.http.get(this.rootURL+'/ProductType')
      .toPromise()
      .then(res=>this.productTypeList=res as ProductType[]);
   }
   
-
+ //Http Requests For Quantity Type CRUD
   
   getQuantityType(){
     this.http.get(this.rootURL+'/QuantityType')
@@ -104,10 +104,32 @@ export class ProductService {
     .then(res=>this.quantityTypeList=res as QuantityType[]);
  }
 
+
+ //Http Requests For Speacial Tag  CRUD
+
  getspecialTag(){
   this.http.get(this.rootURL+'/SpecialTag')
   .toPromise()
   .then(res=>this.specialTagList=res as SpecialTag[]);
+}
+
+
+//Http Requests For User  CRUD
+
+CreateUser(){
+  var body={
+    UserName:this.userModel.value.UserName,
+    Email:this.userModel.value.Email,
+    FullName:this.userModel.value.FullName,
+    Password:this.userModel.value.Passwords.Password,
+
+  };
+ return this.http.post(this.rootURL+'/ApplicationUsers/Register',body);
+
+}
+
+login(formData){
+  return this.http.post(this.rootURL+'/ApplicationUsers/Login',formData);
 }
 
 }

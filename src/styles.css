@@ -86,8 +86,8 @@ div.form-group label:not(.text-danger){
     font-weight: 700;
 }
 input.form-control,input.form-control:focus{
-    background-color: #636b7b;
-    color: #fff;
+    background-color: whitesmoke;
+    color: black;
     border: 1px solid #636b7b;
 
 }

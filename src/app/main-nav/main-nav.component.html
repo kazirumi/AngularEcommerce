@@ -56,6 +56,9 @@
         <a mat-list-item routerLink="/Product"> Product </a>
         <a mat-list-item routerLink="/ProductCRUD"> ProductCRUD </a>
         <a mat-list-item routerLink="/AddToCart"> <i class="fas fa-shopping-cart"></i>({{service.cartNumber}}) </a>
+        <a mat-list-item *ngIf="service.signInStatus"  routerLink="/user/login" class="btn btn-danger" (click)="onLogOut()"> Log Out </a>
+
+
 
 
       

@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/shared/product.service';
   ]
 })
 export class RegistrationComponent implements OnInit {
-  Check:boolean=null;
+  Check:boolean = null;
   constructor(private service:ProductService,private toastr:ToastrService) { }
 
   ngOnInit(): void {

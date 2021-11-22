@@ -9,12 +9,13 @@ import { OrderComponent } from './ecommerce/order/order.component';
 import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { LoginComponent } from './user/login/login.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {path:'Product',component:ProductComponent},
   {path:'ProductCRUD',component:ProductCRUDComponent },
   {path:'ProductDetail/:id',component:ProductDetailComponent },
-  {path:'Order',component:OrderComponent},
+  {path:'Order',component:OrderComponent,canActivate:[AuthGuard]},
 
   {path:'Ecommerce',component:EcommerceComponent },
   {path:'AddToCart',component:AddToCartComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
 
   ]},
 
-  {path:'',redirectTo:'/user/registration',pathMatch:'full' }
+  //{path:'',redirectTo:'/user/registration',pathMatch:'full' }
+  {path:'',redirectTo:'/user/login',pathMatch:'full' }
 
 ];
 
