@@ -38,6 +38,17 @@ orderdetails:OrderDetails[]=[];
 
 
     }
+
+    //Add UserDEtails In Order Form
+    this.service.getUserProfile();
+    
+    if(this.service.userDetails!=null)
+    {
+      this.service.formDataOrder.Name = this.service.userDetails.UserName;
+      this.service.formDataOrder.Email = this.service.userDetails.Email;
+
+
+    }
   }
 
   resetForm(form?:NgForm){

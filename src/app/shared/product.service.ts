@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Order } from './order.model';
@@ -26,6 +26,8 @@ export class ProductService {
   cartNumber:number=0;
 
   signInStatus:boolean;
+
+  userDetails;
   
 
   readonly rootURL='https://localhost:44386/api';
@@ -126,6 +128,19 @@ CreateUser(){
   };
  return this.http.post(this.rootURL+'/ApplicationUsers/Register',body);
 
+}
+
+
+getUserProfile(){
+  // var tokenHeader = new HttpHeaders({'Authorization': 'Bearer '+localStorage.getItem('token')})
+  return this.http.get(this.rootURL+'/UserProfile').subscribe(
+    (res:any)=>{
+      this.userDetails = res;
+    },
+    (err)=>{
+      console.log('Unable to Collect User')
+    }
+  );;
 }
 
 login(formData){

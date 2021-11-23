@@ -12,6 +12,8 @@ export class EcommerceComponent implements OnInit {
 
   ngOnInit() {
     this.service.getFilterProductList();
+
+    this.service.getUserProfile();
   }
 
 }

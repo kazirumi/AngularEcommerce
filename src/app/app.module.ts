@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 //import { ProductComponent } from './Ecommerce/product/product.component';
 import { ProductService } from "./shared/product.service";
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -30,6 +30,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { AuthInterceptor } from './auth/auth.interceptor';
 // import { LoginComponent } from './user/login/login.component';
 
 @NgModule({
@@ -70,7 +71,11 @@ import { ToastrModule } from 'ngx-toastr';
       progressBar:true
     })
   ],
-  providers: [ProductService],
+  providers: [ProductService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

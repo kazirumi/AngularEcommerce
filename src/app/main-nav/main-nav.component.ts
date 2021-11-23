@@ -56,6 +56,7 @@ export class MainNavComponent implements OnInit {
   onLogOut(){
     
     localStorage.removeItem('token');
+    this.service.userDetails={};
     this.service.signInStatus = false;
     
     this.router.navigate(['/user/login']);
