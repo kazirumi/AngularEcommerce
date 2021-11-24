@@ -10,6 +10,8 @@ import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { LoginComponent } from './user/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
+import { ProductListAdminComponent } from './ecommerce/product-crud/product-list-admin/product-list-admin.component';
+
 
 const routes: Routes = [
   {path:'Product',component:ProductComponent},
@@ -27,6 +29,7 @@ const routes: Routes = [
     
 
   ]},
+  {path:'ProductListAdmin',component:ProductListAdminComponent },
 
   //{path:'',redirectTo:'/user/registration',pathMatch:'full' }
   {path:'',redirectTo:'/user/login',pathMatch:'full' }
@@ -38,4 +41,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents=[ProductComponent,ProductCRUDComponent,ProductDetailComponent,EcommerceComponent,AddToCartComponent,OrderComponent, UserComponent,RegistrationComponent,LoginComponent]
+export const routingComponents=[ProductComponent,ProductCRUDComponent,ProductDetailComponent,EcommerceComponent,AddToCartComponent,OrderComponent, UserComponent,RegistrationComponent,LoginComponent,ProductListAdminComponent]

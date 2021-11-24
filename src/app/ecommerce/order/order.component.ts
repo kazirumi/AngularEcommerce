@@ -57,10 +57,10 @@ orderdetails:OrderDetails[]=[];
  
     this.service.formDataOrder={
       ID:0,
-      Name:"",
-      Address:"",
-      PhoneNumber:+880,
-      Email:"",
+      Name:null,
+      Address:null,
+      PhoneNumber:null,
+      Email:null,
       OrderDetails:this.orderdetails
      
      

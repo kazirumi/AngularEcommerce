@@ -1,0 +1,90 @@
+
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="full-width-table" matSort aria-label="Elements">
+    <!-- Id Column -->
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <td mat-cell *matCellDef="let row">{{row.Id}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let row">{{row.Name}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>price</th>
+      <td mat-cell *matCellDef="let row">{{row.price}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Quantity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+      <td mat-cell *matCellDef="let row">{{row.Quantity}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="QuantityTypeID">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>QuantityTypeID</th>
+      <td mat-cell *matCellDef="let row">{{row.QuantityTypeID}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+      <td mat-cell *matCellDef="let row">{{row.Description}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Image">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
+      <td mat-cell *matCellDef="let row">{{row.Image}}</td>
+    </ng-container>
+
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="IsAvailable">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>IsAvailable</th>
+      <td mat-cell *matCellDef="let row">{{row.IsAvailable}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="ProductColor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ProductColor</th>
+      <td mat-cell *matCellDef="let row">{{row.ProductColor}}</td>
+    </ng-container>
+
+     <!-- Name Column -->
+     <ng-container matColumnDef="ProductTypeId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ProductTypeId</th>
+      <td mat-cell *matCellDef="let row">{{row.ProductTypeId}}</td>
+    </ng-container>
+
+     <!-- Name Column -->
+     <ng-container matColumnDef="SpecialTagId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>SpecialTagId</th>
+      <td mat-cell *matCellDef="let row">{{row.SpecialTagId}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data.length"
+      [pageIndex]="0"
+      [pageSize]="50"
+      [pageSizeOptions]="[3,25, 50, 100, 250]">
+  </mat-paginator>
+

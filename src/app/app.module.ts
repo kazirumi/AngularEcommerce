@@ -31,6 +31,11 @@ import { ReactiveFormsModule } from "@angular/forms";
 
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { DataTableComponent } from './data-table/data-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+//import { ProductListAdminComponent } from './ecommerce/product-crud/product-list-admin/product-list-admin.component';
 // import { LoginComponent } from './user/login/login.component';
 
 @NgModule({
@@ -40,6 +45,10 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     routingComponents,
     
     MainNavComponent,
+    
+    DataTableComponent,
+    
+    //ProductListAdminComponent,
     
     // LoginComponent,
     
@@ -69,7 +78,10 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     ReactiveFormsModule,
     ToastrModule.forRoot({
       progressBar:true
-    })
+    }),
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [ProductService,{
     provide: HTTP_INTERCEPTORS,
