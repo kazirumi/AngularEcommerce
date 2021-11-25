@@ -35,7 +35,7 @@ public progress: number;
     this.service.formData={
       Id:0,
       Name:"",
-      price:0, 
+      price:0,
       Quantity:0,
       QuantityTypeID:0,
       Description:"",
@@ -46,10 +46,10 @@ public progress: number;
       SpecialTagId: 0
     }
     this.fileToUpload=null;
-    this.message="";    
+    this.message="";
     this.progress=null;
 
-    
+
   }
 
   handleFileInput(file:FileList){
@@ -58,10 +58,10 @@ public progress: number;
     var reader= new FileReader();
     reader.onload=(event:any)=>{
       this.service.formData.Image=event.target.result;
-      
+
     }
     reader.readAsDataURL(this.fileToUpload);
-    
+
 
    }
 
@@ -97,20 +97,20 @@ public progress: number;
       { this.message='Upload successful';
 
        this.SetImagepath(event.body);
-      
+
        this.service.createProduct()
        .subscribe
        (
           res=>{ this.resetForm(form)},
           err=>{console.log(err)}
-        
-        
+
+
         );
       }
 
     });
- 
-  
+
+
   }
 
 public SetImagepath=(event:any)=>{
@@ -121,8 +121,8 @@ this.service.formData.Image=this.photoPath.dbPath;
 
 public getImage=(Image:string)=>{
 
-  return `https://localhost:44386/${Image}`; 
+  return `https://localhost:44386/${Image}`;
 }
-  
+
 
 }

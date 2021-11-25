@@ -41,25 +41,25 @@ import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   declarations: [
     AppComponent,
-    
+
     routingComponents,
-    
+
     MainNavComponent,
-    
+
     DataTableComponent,
-    
+
     //ProductListAdminComponent,
-    
+
     // LoginComponent,
-    
+
     //UserComponent,
-    
+
     //RegistrationComponent,
-    
-   
-    
-    
-    
+
+
+
+
+
   ],
   imports: [
     BrowserModule,
