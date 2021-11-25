@@ -11,6 +11,7 @@ import { RegistrationComponent } from './user/registration/registration.componen
 import { LoginComponent } from './user/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ProductListAdminComponent } from './ecommerce/product-crud/product-list-admin/product-list-admin.component';
+import { ProductTypePipe,QuantityTypePipe } from "./data-table/data-table.component";
 
 
 const routes: Routes = [
@@ -41,4 +42,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents=[ProductComponent,ProductCRUDComponent,ProductDetailComponent,EcommerceComponent,AddToCartComponent,OrderComponent, UserComponent,RegistrationComponent,LoginComponent,ProductListAdminComponent]
+export const routingComponents=[ProductComponent,ProductCRUDComponent,ProductDetailComponent,EcommerceComponent,AddToCartComponent,OrderComponent, UserComponent,RegistrationComponent,LoginComponent,ProductListAdminComponent,ProductTypePipe,QuantityTypePipe]

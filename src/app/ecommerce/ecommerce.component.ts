@@ -11,8 +11,9 @@ export class EcommerceComponent implements OnInit {
   constructor(private service:ProductService) { }
 
   ngOnInit() {
-    this.service.getFilterProductList();
 
+    this.service.getFilterProductList();
+    if(localStorage.getItem('token')!=null)
     this.service.getUserProfile();
   }
 

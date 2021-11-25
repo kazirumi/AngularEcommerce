@@ -47,6 +47,7 @@ import { MatSortModule } from '@angular/material/sort';
     MainNavComponent,
 
     DataTableComponent,
+   
 
     //ProductListAdminComponent,
 

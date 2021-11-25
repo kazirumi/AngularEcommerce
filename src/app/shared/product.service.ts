@@ -89,6 +89,15 @@ export class ProductService {
     .then(res=>this.filteredProduct=res as Product[])
   }
 
+  updateProduct(){
+    return this.http.put(this.rootURL+'/Product/'+this.formData.Id,this.formData);
+  }
+  deleteProduct(productId:number){
+    console.log(productId);
+    return this.http.delete(this.rootURL+'/Product/'+ productId);
+  }
+
+
 
   //Http Requests For Product Type CRUD
 

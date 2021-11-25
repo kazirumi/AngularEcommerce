@@ -1,3 +1,12 @@
+
+<div></div>
+
+<br>
+<button (click)="resetForm()" class="btn btn-info">Create New Product</button><br><br>
+<button routerLink="/ProductListAdmin" class="btn btn-success">Product List</button>
+<br>
+<br>
+
 <form #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
   <input name="Id" type="hidden" [value]="service.formData.Id">
   <div class="row">
@@ -77,10 +86,15 @@
         
       </div>
       <div>
-        <img  [src]="service.formData.Image"   style="height:200px; width:250px;">
+        <label><strong>New Photo</strong></label><br>
+
+        <img  [src]="service.formData.Image" alt="new one"   style="height:200px; width:250px;"><br><br>
+        <label><strong>Old Photo</strong></label>
+        <img *ngIf="hasEditPhoto"  [src]="getImage(service.formData.Image)"  alt="old one" style="height:200px; width:250px;">
+
         <div class=" form-group">
           <label for="Image">Select Product Image </label>
-          <input id="Image" type="file"  (change)="handleFileInput($event.target.files)"  class="form-control"  name="Image" #Image="ngModel" [(ngModel)]="service.formData.Image" required >
+          <input id="Image" type="file"  (change)="handleFileInput($event.target.files)"  class="form-control"  name="Image" #Image="ngModel" [(ngModel)]="service.formData.Image"  >
          <!-- <br> <button type="button" class="btn btn-info" (click)="uploadConfirm(Image)">Image Upload Confirm</button> --><br><div style="color: red;">{{progress}}<br>{{message}}</div>
         </div>
       </div>
@@ -101,4 +115,7 @@
 
 
 </form>
-{{service.productList|json}}
+<!-- {{service.productList|json}} -->
+{{service.formData|json}}
+
+<br><br>

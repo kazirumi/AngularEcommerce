@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Output,EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-product-list-admin',
@@ -11,6 +11,9 @@ export class ProductListAdminComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
+
+
 
 }
