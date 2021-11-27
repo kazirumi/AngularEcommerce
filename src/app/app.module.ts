@@ -35,6 +35,9 @@ import { DataTableComponent } from './data-table/data-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+//import { OrderListAdminComponent } from './ecommerce/order/order-list-admin/order-list-admin.component';
+//import { OrderListCustomerComponent } from './ecommerce/order/order-list-customer/order-list-customer.component';
 //import { ProductListAdminComponent } from './ecommerce/product-crud/product-list-admin/product-list-admin.component';
 // import { LoginComponent } from './user/login/login.component';
 
@@ -47,6 +50,12 @@ import { MatSortModule } from '@angular/material/sort';
     MainNavComponent,
 
     DataTableComponent,
+
+    ForbiddenComponent,
+
+    
+
+    
    
 
     //ProductListAdminComponent,

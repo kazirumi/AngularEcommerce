@@ -29,6 +29,8 @@ export class AuthInterceptor implements HttpInterceptor{
                                 localStorage.removeItem('token');
                                 this.router.navigateByUrl('/user/login');
                             }
+                            else(err.sttus == 403)
+                            this.router.navigateByUrl('/forbidden');
                             
                         }
                     )

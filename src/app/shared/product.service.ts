@@ -18,6 +18,9 @@ export class ProductService {
   productTypeList:ProductType[];
   specialTagList:SpecialTag[];
   quantityTypeList:QuantityType[];
+  orderList:Order[];
+  customerOrder:Order[];
+
 
   productList:Product[];
   filteredProduct:Product[];
@@ -26,6 +29,7 @@ export class ProductService {
   cartNumber:number=0;
 
   signInStatus:boolean;
+  hideAdminOptions=false;
 
   userDetails;
   
@@ -70,6 +74,17 @@ export class ProductService {
   createOrder(){
     return this.http.post(this.rootURL+'/Orders',this.formDataOrder);
   }
+  getOrders(){
+    return this.http.get(this.rootURL+'/Orders')
+    .toPromise()
+    .then(res=> this.orderList=res as Order[]);
+  }
+
+  getOrdersByName(userName:string){
+    return this.http.get(this.rootURL+'/Orders/'+userName)
+    .toPromise()
+    .then(res=>this.customerOrder=res as Order[]);
+  }
 
   //Http Request For Product CRUD
 
@@ -80,7 +95,10 @@ export class ProductService {
   getProductList(){
     this.http.get(this.rootURL+'/Product')
     .toPromise()
-    .then(res=>this.productList=res as Product[])
+    .then(res=>this.productList=res as Product[],
+      err=>{ console.log(err)}
+      
+      )
    
   }
   getFilterProductList(){
@@ -145,6 +163,8 @@ getUserProfile(){
   return this.http.get(this.rootURL+'/UserProfile').subscribe(
     (res:any)=>{
       this.userDetails = res;
+      console.log(this.userDetails.UserName)
+      this.getOrdersByName(this.userDetails.UserName);
     },
     (err)=>{
       console.log('Unable to Collect User')
@@ -154,6 +174,21 @@ getUserProfile(){
 
 login(formData){
   return this.http.post(this.rootURL+'/ApplicationUsers/Login',formData);
+}
+
+roleMatch(allowedRoles){
+      var isMatch=false;
+      var payload=JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
+      var userRole=payload.role;
+      allowedRoles.forEach(element => {
+        if(element==userRole){
+          isMatch=true;
+          return false;
+        }
+      });
+
+      return isMatch;
+
 }
 
 }

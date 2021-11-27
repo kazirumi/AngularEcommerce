@@ -61,7 +61,8 @@ orderdetails:OrderDetails[]=[];
       Address:null,
       PhoneNumber:null,
       Email:null,
-      OrderDetails:this.orderdetails
+      OrderDetails:this.orderdetails,
+      OrderDate:new Date(),
      
      
     }

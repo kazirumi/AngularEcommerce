@@ -12,11 +12,14 @@ import { LoginComponent } from './user/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ProductListAdminComponent } from './ecommerce/product-crud/product-list-admin/product-list-admin.component';
 import { ProductTypePipe,QuantityTypePipe } from "./data-table/data-table.component";
+import { OrderListAdminComponent } from './ecommerce/order/order-list-admin/order-list-admin.component';
+import { OrderListCustomerComponent } from './ecommerce/order/order-list-customer/order-list-customer.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 
 const routes: Routes = [
   {path:'Product',component:ProductComponent},
-  {path:'ProductCRUD',component:ProductCRUDComponent },
+  {path:'ProductCRUD',component:ProductCRUDComponent,canActivate:[AuthGuard],data:{permittedRoles:["Admin"]}},
   {path:'ProductDetail/:id',component:ProductDetailComponent },
   {path:'Order',component:OrderComponent,canActivate:[AuthGuard]},
 
@@ -30,10 +33,16 @@ const routes: Routes = [
     
 
   ]},
-  {path:'ProductListAdmin',component:ProductListAdminComponent },
+  
+  {path:'ProductListAdmin',component:ProductListAdminComponent,canActivate:[AuthGuard],data:{permittedRoles:["Admin"]}},
+  {path:'forbidden',component:ForbiddenComponent },
+
+  {path:'OrderListAdmin',component:OrderListAdminComponent,canActivate:[AuthGuard],data:{permittedRoles:["Admin"]}},
+  {path:'OrderListCustomer',component:OrderListCustomerComponent,canActivate:[AuthGuard] },
+
 
   //{path:'',redirectTo:'/user/registration',pathMatch:'full' }
-  {path:'',redirectTo:'/user/login',pathMatch:'full' }
+  {path:'',redirectTo:'/Ecommerce',pathMatch:'full' }
 
 ];
 
@@ -42,4 +51,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents=[ProductComponent,ProductCRUDComponent,ProductDetailComponent,EcommerceComponent,AddToCartComponent,OrderComponent, UserComponent,RegistrationComponent,LoginComponent,ProductListAdminComponent,ProductTypePipe,QuantityTypePipe]
+export const routingComponents=[ProductComponent,ProductCRUDComponent,ProductDetailComponent,EcommerceComponent,AddToCartComponent,OrderComponent, UserComponent,RegistrationComponent,LoginComponent,ProductListAdminComponent,ProductTypePipe,QuantityTypePipe,OrderListAdminComponent,OrderListCustomerComponent]

@@ -38,6 +38,7 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.service.getProductList();
     this.dataSource = new MatTableDataSource(this.service.productList);
+    console.log(this.dataSource)
   }
 
   applyFilter(event: Event) {

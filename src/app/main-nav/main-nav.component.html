@@ -12,7 +12,11 @@
 
       <a mat-list-item *ngIf="service.userDetails"   class="nav-link active "><i *ngIf="service.userDetails" class="fas fa-user"></i> <strong>{{service.userDetails.UserName}}</strong></a>
       <a mat-list-item  routerLink="/Product"  class="nav-link active ">Product List</a>
-      <a mat-list-item  routerLink="/ProductCRUD"  class="nav-link active" >Product Create</a>
+      <a mat-list-item *ngIf="service.hideAdminOptions" routerLink="/ProductCRUD"  class="nav-link active" >Product Create</a>
+      <a mat-list-item *ngIf="service.hideAdminOptions" routerLink="/OrderListAdmin"  class="nav-link active" >Order List Admin</a>
+      <a mat-list-item *ngIf="service.signInStatus"  routerLink="/OrderListCustomer"  class="nav-link active" >Order List Customer</a>
+
+
       <!-- <a mat-list-item href="#">Link 3</a> -->
 
       <mat-accordion>
@@ -54,8 +58,8 @@
 
       <span class="spacer"></span>
       
-        <a mat-list-item routerLink="/Product"> Product </a>
-        <a mat-list-item routerLink="/ProductCRUD"> ProductCRUD </a>
+        <!-- <a mat-list-item routerLink="/Product"> Product </a> -->
+        <a mat-list-item *ngIf="!service.signInStatus" routerLink="/user/login"> Sign IN </a>
         <a mat-list-item routerLink="/AddToCart"> <i class="fas fa-shopping-cart"></i>({{service.cartNumber}}) </a>
         <a mat-list-item *ngIf="service.signInStatus"  routerLink="/user/login" class="btn btn-danger" (click)="onLogOut()"> Log Out </a>
 

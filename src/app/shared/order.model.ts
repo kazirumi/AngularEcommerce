@@ -6,5 +6,6 @@ export class Order {
     Address:string;
     PhoneNumber:number;
     Email:string;
-    OrderDetails:OrderDetails[]
+    OrderDetails:OrderDetails[];
+    OrderDate:Date;
 }
