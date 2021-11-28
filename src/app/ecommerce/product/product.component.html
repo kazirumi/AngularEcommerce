@@ -1,7 +1,7 @@
 
-<div class="row" style="margin-top: 5px;">
+<div fxLayout="row wrap" style="margin-top: 5px;"  fxLayoutGap="16px grid" fxLayoutAlign="space-between center">
     
-        <div  *ngFor="let prod of service.filteredProduct" >
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%"  *ngFor="let prod of service.filteredProduct" >
        
             <div class="col-md-4 ">
               <div class="card " style="width: 18rem; padding-left: 5mm;"><br>

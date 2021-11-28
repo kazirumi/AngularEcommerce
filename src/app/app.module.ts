@@ -35,6 +35,7 @@ import { DataTableComponent } from './data-table/data-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 //import { OrderListAdminComponent } from './ecommerce/order/order-list-admin/order-list-admin.component';
 //import { OrderListCustomerComponent } from './ecommerce/order/order-list-customer/order-list-customer.component';
@@ -91,7 +92,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     }),
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    FlexLayoutModule
   ],
   providers: [ProductService,{
     provide: HTTP_INTERCEPTORS,
